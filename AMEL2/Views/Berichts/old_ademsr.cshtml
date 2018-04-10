@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<AMEL2.Models.Bericht>
 
 @{
-    ViewBag.Title = "Antriebsstammdaten";
+    ViewBag.Title = "Aggregatestammdaten";
 }
 
-<h2>Antriebsstammdaten</h2>
+<h2>Aggregatestammdaten</h2>
 <!--
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,40 +21,37 @@
 
 <table class="table">
     <tr>
-        <th>
-            Index 1
+        <th class=".header-col-pro12">
+            Anlage
         </th>
-        <th>
-            Index 2
+        <th class=".header-col-pro12">
+            Bereich
         </th>
-        <th>
-            Index 3
+        <th class=".header-col-pro12">
+            Aggregat
         </th>
-        <th>
+        <th class=".header-col-pro12">
             @Html.ActionLink("AKZ", "old_ademsr", new { sortOrder = ViewBag.s1SortParm })
         </th>
-        <th>
+        <th class=".header-col-pro12">
             ID
         </th>
-        <th>
+        <th class=".header-col-pro12">
             Bezeichnung
         </th>
-        <th>
+        <th class=".header-col-pro12">
             Antriebsart
+        </th>        
+        <th class=".header-col-auto">
+            RepSchalter
         </th>
-        <th>
-            Montageort
-        </th>
-        <th>
-            Reparaturschalter
-        </th>
-        <th>
+        <th class=".header-col-auto">
             Ex-Schutz
         </th>
-        <th>
+        <th class=".header-col-pro12">
             Bemerkungen
         </th>
-        <th>
+        <th class=".header-col-pro12">
             Änd-Index
         </th>     
 
@@ -62,81 +59,80 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            @if (item.IT == 0)
-            {
-                <td class="table-cell-aliceblue" colspan="2">
-                    @Html.DisplayFor(modelItem => item.s1)
-                </td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                <td class="table-cell-aliceblue"></td>
-                
-            }
+    <tr>
+        @if (item.IT == 0)
+    {
+        <td class="table-cell-aliceblue" colspan="2">
+            @Html.DisplayFor(modelItem => item.s1)
+        </td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+        <td class="table-cell-aliceblue"></td>
+
+}
+        @if (item.IT != 0)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.s1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s7)
+        </td>
+
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.s9)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s10)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s11)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.s12)
+        </td>
+
+
+}
+
+
+        <td>
             @if (item.IT != 0)
-            {
-                <td>
-                    @Html.DisplayFor(modelItem => item.s1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s4)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s5)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s6)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s7)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s8)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s9)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s10)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s11)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.s12)
-                </td>
-              
+        {
+            @Html.ActionLink("Bearbeiten", "old_ademsr_edit", new { id = item.BerichtID })
+    }
 
-            }
+            <!--
+        @Html.ActionLink("Details", "Details", new { id=item.BerichtID }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.BerichtID })
+         -->
+        </td>
 
-
-            <td>
-                @if (item.IT != 0)
-                {
-                    @Html.ActionLink("Bearbeiten", "old_ademsr_edit", new { id = item.BerichtID })
-                }
-
-                <!--
-                @Html.ActionLink("Details", "Details", new { id=item.BerichtID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.BerichtID })
-                 -->
-            </td>
-
-        </tr>
+    </tr>
     }
 
 </table>

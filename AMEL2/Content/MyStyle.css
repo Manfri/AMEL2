@@ -29,5 +29,10 @@
   font-weight: 200;
   line-height: 1.4;
 }
-
+  .header-col-auto{
+      width :auto;
+  }
+.header-col-pro12 {
+    width: 12%;
+}
 

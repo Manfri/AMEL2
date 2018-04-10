@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<AMEL2.Models.Bericht>
 
 @{
-    ViewBag.Title = "Antriebsdaten VMT";
+    ViewBag.Title = "Aggregatemaschinendaten";
 }
 
-<h2>Maschinendaten</h2>
+<h2>Aggregatemaschinendaten</h2>
 <!--
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,13 +22,13 @@
 <table class="table">
     <tr>
         <th>
-            Index 1
+            Anlage
         </th>
         <th>
-            Index 2
+            Bereich
         </th>
         <th>
-            Index 3
+            Aggregat
         </th>
         <th>
             @Html.ActionLink("AKZ", "old_advmt", new { sortOrder = ViewBag.s1SortParm })
@@ -66,19 +66,19 @@
             cos phi 
         </th>
         <th>
-            Kaltleiter 
+            Kalt-leiter 
         </th>
         <th>
-            Dichtigkeit 
+            Dichtig-keit 
         </th>
         <th>
             Temp.
         </th>
         <th>
-            Überdruck 
+            Über-druck 
         </th>
         <th>
-            Trockenlauf 
+            Trocken-lauf 
         </th>
 
     </tr>
