@@ -1,0 +1,33 @@
+﻿
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+    max-height: 500px;
+  }
+  .navbar-collapse.collapse {
+    display: block !important;   
+    height: 500px;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse.in {
+    overflow-y: visible;
+  }
+  .navbar-collapse .navbar-nav.navbar-left:first-child {
+    margin-left: -15px;
+  }
+  .navbar-collapse .navbar-nav.navbar-right:last-child {
+    margin-right: -15px;
+  }
+  .navbar-collapse .navbar-text:last-child {
+    margin-right: 0;
+  }
+  .lead {
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+
