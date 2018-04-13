@@ -6,10 +6,10 @@
     max-height: 500px;
   }
   .navbar-collapse.collapse {
-    display: block !important;   
+    display: block ;   
     height: 500px;
     padding-bottom: 0;
-    overflow: visible !important;
+    overflow: visible;
   }
   .navbar-collapse.in {
     overflow-y: visible;

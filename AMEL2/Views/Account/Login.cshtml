@@ -45,24 +45,25 @@
         </section>
     </div>
 </div>
-    @*
-            @Html.ActionLink("Als neuer Benutzer registrieren", "Register")
 
-            </p>
-             Diese Option aktivieren, nachdem Sie die Kontobestätigung für die Funktion zum Zurücksetzen des Kennworts aktiviert haben
-                <p>
-                    @Html.ActionLink("Kennwort vergessen?", "ForgotPassword")
-                </p>
-                    }
-                </section>
-            </div>
-            <div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>
-        </div>
-    *@
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+
+@*
+    @Html.ActionLink("Als neuer Benutzer registrieren", "Register")
+
+
+     Diese Option aktivieren, nachdem Sie die Kontobestätigung für die Funktion zum Zurücksetzen des Kennworts aktiviert haben
+        <p>
+            @Html.ActionLink("Kennwort vergessen?", "ForgotPassword")
+        </p>
+
+
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+
+*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

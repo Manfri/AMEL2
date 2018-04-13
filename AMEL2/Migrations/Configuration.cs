@@ -25,9 +25,9 @@ namespace AMEL2.Migrations
                 new UserStore<ApplicationUser>(context));
             var user = new ApplicationUser()
             {
-                UserName = "oldenburg@amel.de",
+                UserName = "kuehn@aqua-consult.de",
             };
-            ir = um.Create(user, "$Oldenburg123");
+            ir = um.Create(user, "$$Kuehn06");
             if (ir.Succeeded == false)
                 return ir.Succeeded;
             ir = um.AddToRole(user.Id, "canEdit");

@@ -13,7 +13,7 @@
 @using (Html.BeginForm())
 {
     <p>
-        Stichwortsuche nach AKZ: @Html.TextBox("SearchString")
+        Stichwortsuche: @Html.TextBox("SearchString")
         <input type="submit" value="Suchen" />
         <input type="button" value="Alle anzeigen" onclick="location.href='@Url.Action("old_ademsr", "Berichts",new {sortOrder = String.Empty, searchString = "All"},null)';return false;" />
     </p>

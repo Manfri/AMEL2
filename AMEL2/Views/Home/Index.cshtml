@@ -7,13 +7,19 @@
     <!--
     <h2>&nbsp;&nbsp; Neubau und Sanierung Faultürme</h2>
     -->
-    <br/>
     <br />
     <br />
+    <br />
+    @using (@Html.BeginForm("GetPdf", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" id="Document" name='Document' /><br />
+        <input type='submit' value='Upload' /><br />
+
+    }
     <br />
     <p class="lead">Pandatasoft - Software für die Panoramische Darstellung von Daten</p>
     <p class="lead">Greifen Sie von ÜBERALL und JEDERZEIT auf Ihre aktuellen Projektdaten zu</p>
-    
+    @Html.ActionLink("Abmelden", "Logoff")
 </div>
 
 <div class="row">
