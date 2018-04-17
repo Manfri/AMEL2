@@ -29,10 +29,51 @@
   font-weight: 200;
   line-height: 1.4;
 }
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
   .header-col-auto{
       width :auto;
   }
 .header-col-pro12 {
     width: 12%;
+}
+.Name {
+    width: 5%;
+
+}
+.Name-center {
+    width: 5%;
+    align-content:center
+}
+.Section {
+    width: 10%;
+}
+
+.TaskNature {
+    width: 10%;
+}
+
+.Type {
+    width: 5%;
+}
+
+.TaskDescription {
+    width: 15%;
+}
+
+.ProgressUpdate {
+    width: 25%;
+}
+
+.StartDate {
+    width: 5%;
+}
+.td-center {
+    align-items: center;
 }
 
