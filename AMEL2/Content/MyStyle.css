@@ -61,7 +61,12 @@ section {
 .Type {
     width: 5%;
 }
-
+.light-grey {
+    background-color:lightgray;
+}
+.smoke-white {
+    background-color:whitesmoke;
+}
 .TaskDescription {
     width: 15%;
 }
