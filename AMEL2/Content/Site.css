@@ -5,7 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content { 
-    padding-left: 15px;
+    padding-left: 2px;
     padding-right: 15px;
 }
 
@@ -39,7 +39,7 @@ textarea {
 }
 .rest {
     position: relative;
-    margin-left: 200px;
+    margin-left: 50px;
     height: 100%;   
 }
 * {

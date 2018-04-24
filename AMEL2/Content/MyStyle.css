@@ -81,4 +81,10 @@ section {
 .td-center {
     align-items: center;
 }
+.Section-td {
+    word-break: keep-all;
+    white-space: nowrap;
+    margin: 10px;
+    padding: 10px;
+}
 
