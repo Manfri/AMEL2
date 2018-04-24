@@ -10,14 +10,17 @@ using AMEL2.Models;
 using System.IO;
 
 namespace AMEL2.Controllers
-{
+{    
     public class BerichtsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Berichts        
         static string _searchString;
-       
+
+        
+
+
         public void ExcelExport_old_ademsr(string sortOrder, string searchString)
         {
             StringWriter sw = new StringWriter();

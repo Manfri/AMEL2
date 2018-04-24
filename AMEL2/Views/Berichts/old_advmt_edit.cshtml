@@ -7,17 +7,23 @@
 
 @{
     List<SelectListItem> listItems = new List<SelectListItem>();
-    listItems.Add(new SelectListItem
-    {
-        Text = "X",
-        Value = "X"
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "-",
-        Value = "-"
-        
-    });
+    var data = new[]{
+                 new SelectListItem{ Value="X",Text="X"},
+                 new SelectListItem{ Value="-",Text="-"},
+             };
+    listItems = data.ToList();
+
+    //listItems.Add(new SelectListItem
+    //{
+    //    Text = "X",
+    //    Value = "X"
+    //});
+    //listItems.Add(new SelectListItem
+    //{
+    //    Text = "-",
+    //    Value = "-"
+
+    //});
 }
 
 
