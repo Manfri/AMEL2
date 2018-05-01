@@ -14,7 +14,7 @@ namespace AMEL2.Controllers
     public class BerichtsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Berichts        
         static string _searchString;
 
@@ -92,6 +92,7 @@ namespace AMEL2.Controllers
             ViewBag.s1SortParm = String.IsNullOrEmpty(sortOrder) ? "s1_desc" : "";
             var bers = from s in db.Berichts select s;
             bers = bers.Where(p => p.BN == 1 && p.Projekt== 170722);
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 if (searchString.Equals("All"))
@@ -119,6 +120,7 @@ namespace AMEL2.Controllers
                     bers = bers.OrderByDescending(s => s.s4);
                     break;
             }
+            ViewBag.TotalAgg = bers.Count();
             return View(bers.ToList());
         }
 

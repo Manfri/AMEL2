@@ -72,7 +72,7 @@ namespace AMEL2.Controllers
             {
                 return View(model);
             }
-
+            GlobalVariables.Email = model.Email;
             // Anmeldefehler werden bezüglich einer Kontosperre nicht gezählt.
             // Wenn Sie aktivieren möchten, dass Kennwortfehler eine Sperre auslösen, ändern Sie in "shouldLockout: true".
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -151,6 +151,7 @@ namespace AMEL2.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -210,11 +211,12 @@ namespace AMEL2.Controllers
                 }
 
                 // Weitere Informationen zum Aktivieren der Kontobestätigung und Kennwortzurücksetzung finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=320771".
-                // E-Mail-Nachricht mit diesem Link senden
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Kennwort zurücksetzen", "Bitte setzen Sie Ihr Kennwort zurück. Klicken Sie dazu <a href=\"" + callbackUrl + "\">hier</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                  // E-Mail-Nachricht mit diesem Link senden
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                //var callbackUrl = Url.Action("ResetPassword", "Account", new { model=model }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Kennwort zurücksetzen", "Bitte setzen Sie Ihr Kennwort zurück. Klicken Sie dazu <a href=\"" + callbackUrl + "\">hier</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // Wurde dieser Punkt erreicht, ist ein Fehler aufgetreten; Formular erneut anzeigen.
@@ -234,9 +236,34 @@ namespace AMEL2.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            //return code == null ? View("Error") : View();
+            return View();
         }
+        private void ChangePassword(string userId, string newPassword)
+        {
+            //Get the user manager and user. (if the user is not found, user will be null)
+            var manager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            ApplicationUser user = manager.FindById(userId);
 
+            //PasswordHash is just a string. You can set to any string value, and it won't cause an error.
+            //It will just be challenging for the user to actually login.
+            user.PasswordHash = manager.PasswordHasher.HashPassword(newPassword);
+
+            //see below
+            manager.UpdateSecurityStamp(userId);
+            //save changes
+            IdentityResult v = manager.Update(user);
+            if (v.Succeeded)
+            {
+                RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+            else
+            {
+                //failure. Perhaps Loop through v.Errors to find out why.
+                //Though, the documentation doesn't provide any hints as to what possible values
+                //v.Errors may contain (it's an IEnumerable)
+            }
+        }
         //
         // POST: /Account/ResetPassword
         [HttpPost]
@@ -254,12 +281,20 @@ namespace AMEL2.Controllers
                 // Nicht anzeigen, dass der Benutzer nicht vorhanden ist.
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+
+            //var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);          
+            user.PasswordHash = UserManager.PasswordHasher.HashPassword(model.Password);
+            UserManager.UpdateSecurityStamp(user.Id);
+            var result = UserManager.Update(user);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
+            }            
             AddErrors(result);
+            ModelState.AddModelError("", model.Email);
+            ModelState.AddModelError("", model.Code);
+            ModelState.AddModelError("", model.Password);
+            ModelState.AddModelError("", user.Id);
             return View();
         }
 

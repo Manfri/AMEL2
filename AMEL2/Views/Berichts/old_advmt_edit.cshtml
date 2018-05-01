@@ -6,24 +6,12 @@
 
 
 @{
-    List<SelectListItem> listItems = new List<SelectListItem>();
+    List<SelectListItem> listYesNo = new List<SelectListItem>();
     var data = new[]{
                  new SelectListItem{ Value="X",Text="X"},
                  new SelectListItem{ Value="-",Text="-"},
              };
-    listItems = data.ToList();
-
-    //listItems.Add(new SelectListItem
-    //{
-    //    Text = "X",
-    //    Value = "X"
-    //});
-    //listItems.Add(new SelectListItem
-    //{
-    //    Text = "-",
-    //    Value = "-"
-
-    //});
+    listYesNo = data.ToList();
 }
 
 
@@ -165,7 +153,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.s21, "Kaltleiter", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.s21, listItems,  new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.s21, listYesNo,  new { @class = "form-control" })
            @* @Html.EditorFor(model => model.s21, new { htmlAttributes = new { @class = "form-control" } })*@
             @Html.ValidationMessageFor(model => model.s21, "", new { @class = "text-danger" })
         </div>

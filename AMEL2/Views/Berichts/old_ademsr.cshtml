@@ -18,8 +18,9 @@
         <input type="button" value="Alle anzeigen" onclick="location.href='@Url.Action("old_ademsr", "Berichts",new {sortOrder = String.Empty, searchString = "All"},null)';return false;" />
     </p>
 }
-
-<table  border="1">
+<a href="">Gesamt: @ViewBag.TotalAgg</a>
+<a href="">Gesamt: @ViewBag.TotalAgg</a>
+<table border="1">
     <thead>
         <tr>
             <th class="Section">
@@ -64,80 +65,81 @@
     @foreach (var item in Model)
     {
         ++counter;
-<tr class="@(counter%2 == 1 ? "light-grey" : "smoke-white")">
-    @if (item.IT == 0)
-    {
-        <td class="table-cell-aliceblue" colspan="2">
-            @Html.DisplayFor(modelItem => item.s1)
-        </td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
-        <td class="table-cell-aliceblue"></td>
+        <tr class="@(counter%2 == 1 ? "light-grey" : "smoke-white")">
+            @if (item.IT == 0)
+            {
+                <td class="table-cell-aliceblue" colspan="2">
+                    @Html.DisplayFor(modelItem => item.s1)
+                </td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
+                <td class="table-cell-aliceblue"></td>
 
-    }
-    @if (item.IT != 0)
-    {
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s1)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s2)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s3)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s4)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s5)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s6)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s7)
-        </td>
-
-
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.s9)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.s10)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s11)
-        </td>
-        <td class="Section-td">
-            @Html.DisplayFor(modelItem => item.s12)
-        </td>
+            }
+            @if (item.IT != 0)
+            {
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s1)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s2)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s3)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s4)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s5)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s6)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s7)
+                </td>
 
 
-    }
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.s9)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.s10)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s11)
+                </td>
+                <td class="Section-td">
+                    @Html.DisplayFor(modelItem => item.s12)
+                </td>
 
 
-    <td>
-        @if (item.IT != 0)
-        {
-            @Html.ActionLink("Bearbeiten", "old_ademsr_edit", new { id = item.BerichtID })
-        }
+            }
 
-        <!--
-        @Html.ActionLink("Details", "Details", new { id=item.BerichtID }) |
-        @Html.ActionLink("Delete", "Delete", new { id=item.BerichtID })
-         -->
-    </td>
 
-</tr>
+            <td>
+                @if (item.IT != 0)
+                {
+                    @Html.ActionLink("Bearbeiten", "old_ademsr_edit", new { id = item.BerichtID })
+                }
+
+                <!--
+                @Html.ActionLink("Details", "Details", new { id=item.BerichtID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.BerichtID })
+                 -->
+            </td>
+
+        </tr>
+
 }
 
-</table>
+    </table>
