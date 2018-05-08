@@ -1,0 +1,26 @@
+﻿@model AMEL2.tblAntriebsart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblAntriebsart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Antriebsart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Antriebsart)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDAA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

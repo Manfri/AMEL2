@@ -8,13 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using AMEL2.Models;
 using System.IO;
+using AMEL2;
 
 namespace AMEL2.Controllers
 {    
     public class BerichtsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+        private tblAntriebsart TAntriebsart = new tblAntriebsart();
         // GET: Berichts        
         static string _searchString;
 
@@ -44,6 +45,8 @@ namespace AMEL2.Controllers
             Response.Write(sw);
             Response.End();
         }
+
+        
 
         public List<Bericht> getList_admser(string sortOrder, string searchString)
         {
@@ -85,7 +88,10 @@ namespace AMEL2.Controllers
         {
             return View(db.Berichts.ToList());
         }
+        
         // GET: Berichts
+
+
 
         public ActionResult old_ademsr(string sortOrder, string searchString)
         {
