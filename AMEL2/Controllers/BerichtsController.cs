@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using AMEL2.Models;
 using System.IO;
 using AMEL2;
+using System.Web.Security;
 
 namespace AMEL2.Controllers
 {    
@@ -16,6 +17,8 @@ namespace AMEL2.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private tblAntriebsart TAntriebsart = new tblAntriebsart();
+        private PandatasoftEntities1 db1 = new PandatasoftEntities1();
+        //Bericht bericht = new Bericht() { };
         // GET: Berichts        
         static string _searchString;
 
@@ -540,7 +543,10 @@ namespace AMEL2.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(bericht).State = EntityState.Modified;
-                db.SaveChanges();
+                db.SaveChanges();                
+                BerichtsUpdateTrack but = new BerichtsUpdateTrack() { Projekt = bericht.Projekt, BN = bericht.BN, IT = bericht.IT, Email = User.Identity.Name, Date = DateTime.Now };
+                db1.BerichtsUpdateTrack.Add(but);
+                db1.SaveChanges();
                 return RedirectToAction("old_ademsr");
             }
             return View(bericht);

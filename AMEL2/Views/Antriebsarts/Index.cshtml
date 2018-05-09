@@ -23,9 +23,10 @@
             @Html.DisplayFor(modelItem => item.Antriebsart)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDAA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDAA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDAA })
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDAA }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDAA }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDAA })
+            @Html.ActionLink("Create", "CreateAntrieb", new { id = item.IDAA })
         </td>
     </tr>
 }

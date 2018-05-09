@@ -208,6 +208,24 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BerichtsTrack.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BerichtsTrack.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BerichtsTrack.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BerichtsTrack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BerichtsTrack.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BerichtsTrack.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BerichtsUpdateTrack.cs">
+      <DependentUpon>BerichtsTrack.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AntriebsartsController.cs" />
     <Compile Include="Controllers\BerichtsController.cs" />
@@ -248,6 +266,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BerichtsTrack.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BerichtsTrack.edmx</DependentUpon>
+      <LastGenOutput>BerichtsTrack.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BerichtsTrack.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BerichtsTrack.edmx</DependentUpon>
+      <LastGenOutput>BerichtsTrack.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\MyStyle.css" />
     <Content Include="favicon.ico" />
@@ -275,6 +303,13 @@
     </EntityDeploy>
     <Content Include="Antriebsart.edmx.diagram">
       <DependentUpon>Antriebsart.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="BerichtsTrack.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BerichtsTrack.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BerichtsTrack.edmx.diagram">
+      <DependentUpon>BerichtsTrack.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\AMEL2.pubxml">
       <SubType>Designer</SubType>

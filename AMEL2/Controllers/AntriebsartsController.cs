@@ -14,6 +14,7 @@ namespace AMEL2.Controllers
     {
         private PandatasoftEntities db = new PandatasoftEntities();
         
+
         public List<SelectListItem> getListAntriebsart()
         {          
             List<tblAntriebsart> listAntriebsart = db.tblAntriebsart.ToList();            
@@ -64,7 +65,18 @@ namespace AMEL2.Controllers
 
             return View(tblAntriebsart);
         }
-
+        public ActionResult CreateAntrieb()
+        {
+            if (ModelState.IsValid)
+            {
+                tblAntriebsart antr = new tblAntriebsart() { Antriebsart = "Test4" };
+                db.tblAntriebsart.Add(antr);
+                db.SaveChanges();                
+            }
+            return RedirectToAction("Index");
+        }
+        
+        
         // GET: Antriebsarts/Edit/5
         public ActionResult Edit(int? id)
         {
