@@ -18,7 +18,7 @@ namespace AMEL2.Controllers
         public List<SelectListItem> getListAntriebsart()
         {          
             List<tblAntriebsart> listAntriebsart = db.tblAntriebsart.ToList();            
-            var lst = listAntriebsart.Select(x => new SelectListItem { Value = x.Antriebsart.ToString(), Text = x.Antriebsart.ToString() }).ToArray().ToList();
+            var lst = listAntriebsart.Select(x => new SelectListItem { Value = x.Antriebsart.ToString(), Text = x.Antriebsart.ToString() }).ToList();
             return lst;
         }
         // GET: Antriebsarts
